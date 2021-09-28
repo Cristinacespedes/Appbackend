@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "529cd2a3-c1db-48d6-8c4e-6eab4d898f5e",
+		"name": "CLIENTES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cedula_cliente\":654321,\r\n    \"direccion_cliente\":\"Carrera 123 #56-77\",\r\n    \"email_cliente\":\"pepitop@mail.com\",\r\n    \"nombre_cliente\":\"Pepito Perez\",\r\n    \"telefono_cliente\":\"5555555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CONSULTAR",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cc",
+							"value": "10142104",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/usuarios/consultar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuarios",
+						"consultar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cc",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/usuarios/borrar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"usuarios",
+						"borrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cedulaUsuario\":123456,\r\n    \"emailUsuario\":\"lopezo@mail.com\",\r\n    \"nombreUsuario\":\"carlos lopez\",\r\n    \"usuario\":\"lopezo\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
