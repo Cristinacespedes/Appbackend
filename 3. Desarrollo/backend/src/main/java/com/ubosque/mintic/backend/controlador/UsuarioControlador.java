@@ -69,7 +69,7 @@ public class UsuarioControlador {
 		
 		return respuesta;
 	}
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public @ResponseBody ResponseEntity autenticarUsuario(@RequestBody Usuario usuarioNuevo) {
 		
 		Usuario usuarioAutenticado = servicio.autenticarUsuarioServicio(usuarioNuevo.getUsuario(), usuarioNuevo.getPassword());
