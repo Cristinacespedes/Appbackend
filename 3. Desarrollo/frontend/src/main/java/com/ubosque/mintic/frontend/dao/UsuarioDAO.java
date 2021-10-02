@@ -31,15 +31,17 @@ public class UsuarioDAO {
 		dao.consultarPorUsuarioYContrasena(dto);
 	}
 	
-	public boolean crearUsuario(UsuarioDTO usr) {
+	public boolean crearUsuario(UsuarioDTO dto) {
 		Gson gson = new Gson();
-		String usuarioJSON = gson.toJson(usr);
+		String usuarioJSON = gson.toJson(dto);
 		
 		Client cliente = ClientBuilder.newClient();
-		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios");
+		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/crear");
 		Response respuesta = servicioREST.request().post(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));
 		if(respuesta.getStatus()==201) {
 			return true;
+		}else if(respuesta.getStatus()==404) {
+			return false;
 		}
 		return false;
 	}

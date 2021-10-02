@@ -106,7 +106,7 @@ form .input-box span.details{
    height: 40px;
    margin: 15px 0
  }
- form .button input{
+ form .button button{
    height: 90%;
    width: 16%;
    border-radius: 25px;
@@ -119,7 +119,7 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background: linear-gradient(to right, #000000, #3B3B3B);
  }
- form .button input:hover{
+ form .button button:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #000000, #3B3B3B);
   }

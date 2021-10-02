@@ -27,7 +27,7 @@ body{
 .containerb{
   max-width: 800px;
   width: 100%;
-  background-color:;
+  background-color:white;
   padding: 10px 10px;
   border-radius: 5px;
   Background-color: transparent;
@@ -105,6 +105,7 @@ form .input-box span.details{
  form .button{
    height: 40px;
    margin: 15px 0
+   
  }
  form .button input{
    height: 90%;
@@ -147,6 +148,27 @@ form .user-details .input-box{
     flex-direction: column;
   }
 }
-
+ form .button_encabezado{
+   height: 40px;
+   margin: 15px 0
+   
+ }
+ form .button_encabezado button{
+   height: 90%;
+   width: 16%;
+   border-radius: 25px;
+   border: none;
+   color: #fff;
+   font-size: 15px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(to right, #000000, #3B3B3B);
+ }
+ form .button_encabezado button:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #000000, #3B3B3B);
+  }
 
 
