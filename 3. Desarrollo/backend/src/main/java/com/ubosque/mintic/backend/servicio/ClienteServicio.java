@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ubosque.mintic.backend.entidad.Cliente;
-import com.ubosque.mintic.backend.entidad.Usuario;
 import com.ubosque.mintic.backend.repositorio.ClienteRepositorio;
 
 @Service

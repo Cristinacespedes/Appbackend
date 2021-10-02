@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +32,7 @@ public class ClienteControlador {
 		
 		ResponseEntity respuesta = null;
 		if(respuestaServicio) {
-			respuesta = new ResponseEntity("Cliente Creado",HttpStatus.OK);
+			respuesta = new ResponseEntity("Cliente Creado",HttpStatus.CREATED);
 		}else {
 			respuesta = new ResponseEntity("Faltan datos del cliente", HttpStatus.NOT_ACCEPTABLE);
 		}
@@ -46,7 +47,7 @@ public class ClienteControlador {
 		
 		ResponseEntity respuesta = null;
 		if(respuestaServicio) {
-			respuesta = new ResponseEntity("Datos del cliente Actualizados",HttpStatus.OK);
+			respuesta = new ResponseEntity("Datos del cliente Actualizados",HttpStatus.CREATED);
 		}else {
 			respuesta = new ResponseEntity("Datos faltantes", HttpStatus.NOT_ACCEPTABLE);
 		}
@@ -63,14 +64,14 @@ public class ClienteControlador {
 		if(clienteConsultado != null) {
 			respuesta = new ResponseEntity(clienteConsultado,HttpStatus.OK);
 		}else {
-			respuesta = new ResponseEntity("CLIENTE INEXISTENTE",HttpStatus.OK);
+			respuesta = new ResponseEntity("CLIENTE INEXISTENTE",HttpStatus.NO_CONTENT);
 		}
 		
 		return respuesta;
 	}
 
 
-	@GetMapping("/borrar")
+	@DeleteMapping("/borrar")
 	public @ResponseBody ResponseEntity borrarCliente(@RequestBody Cliente clienteNuevo) {
 		
 		boolean clienteBorrar = servicio.borrarClienteServicio(clienteNuevo.getCedulaCliente());
@@ -79,7 +80,7 @@ public class ClienteControlador {
 		if(clienteBorrar == true) {
 			respuesta = new ResponseEntity("Datos del Cliente Borrados",HttpStatus.OK);
 		}else {
-			respuesta = new ResponseEntity("Cédula Errada",HttpStatus.OK);
+			respuesta = new ResponseEntity("Cédula Errada",HttpStatus.NO_CONTENT);
 		}
 		
 		return respuesta;
