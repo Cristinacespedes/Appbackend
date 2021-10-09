@@ -18,6 +18,22 @@ public class UsuarioLogica {
 		return dao.consultarPorUsuarioYContrasena(dto);
 	}
 	
+	public UsuarioDTO consultarPorCedula(UsuarioDTO usuarioAConsultar) {
+		
+		dao= new UsuarioDAO();
+		String json = dao.consultarPorCedula(usuarioAConsultar);
+		UsuarioDTO usuarioConsultado = new UsuarioDTO();
+		if(json !="USUARIO INEXISTENTE") {
+            Type tipoUsuario = new TypeToken<UsuarioDTO>(){}.getType();
+			Gson gson= new Gson();
+			usuarioConsultado =gson.fromJson(json, tipoUsuario);
+		}else {
+			usuarioConsultado=null;
+		}
+		return usuarioConsultado;
+		//return dao.consultarPorCedula(usuarioAConsultar);
+	}
+	
 	public List<UsuarioDTO> listar(){
 		dao = new UsuarioDAO();
 		String json = dao.listarUsuarios();
@@ -37,6 +53,12 @@ public class UsuarioLogica {
 		dao = new UsuarioDAO();
 		return dao.crearUsuario(dto);
 	}
+	
+	public boolean actualizar(UsuarioDTO dto) {
+		dao = new UsuarioDAO();
+		return dao.crearUsuario(dto);
+	}
+	
 	
 	public boolean borrar(UsuarioDTO dto) {
 		dao = new UsuarioDAO();

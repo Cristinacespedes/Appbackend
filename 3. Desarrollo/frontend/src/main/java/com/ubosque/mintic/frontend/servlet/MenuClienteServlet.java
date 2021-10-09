@@ -7,22 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.ubosque.mintic.frontend.dao.UsuarioDAO;
-import com.ubosque.mintic.frontend.dto.UsuarioDTO;
-import com.ubosque.mintic.frontend.logica.UsuarioLogica;
+import com.ubosque.mintic.frontend.dto.ClienteDTO;
+import com.ubosque.mintic.frontend.logica.ClienteLogica;
+
 
 /**
- * Servlet implementation class MenuUsuariosServlet
+ * Servlet implementation class MenuClienteServlet
  */
-@WebServlet("/MenuUsuariosServlet")
-public class MenuUsuariosServlet extends HttpServlet {
+@WebServlet("/MenuClienteServlet")
+public class MenuClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenuUsuariosServlet() {
+    public MenuClienteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +30,8 @@ public class MenuUsuariosServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -44,68 +44,65 @@ public class MenuUsuariosServlet extends HttpServlet {
 		String borrar = request.getParameter("Borrar");
 		
 		String cedulaDigitada = request.getParameter("txtCedula");
+		String direccionDigitada = request.getParameter("txtDireccion");
 		String correoDigitado = request.getParameter("emCorreo");
 		String nombreDigitado = request.getParameter("txtNombre");
-		String contrasenaDigitada = request.getParameter("pwdContrasena");
-		String usuarioDigitado = request.getParameter("txtUsuario");
+		String telefonoDigitado = request.getParameter("txtTelefono");
 		
 		if (consultar !=null) {
-			UsuarioDTO dto = new UsuarioDTO();
-			dto.setCedulaUsuario(cedulaDigitada);
-			UsuarioLogica logica = new UsuarioLogica();
-			UsuarioDTO usuarioConsultado = logica.consultarPorCedula(dto);
-			if(usuarioConsultado !=null) {
+			ClienteDTO dto = new ClienteDTO();
+			dto.setCedulaCliente(cedulaDigitada);
+			ClienteLogica logica = new ClienteLogica();
+			ClienteDTO clienteConsultado = logica.consultarPorCedula(dto);
+			if(clienteConsultado !=null) {
 				response.sendRedirect("/frontend/menu/menuPrincipal.html");
 			}else {
 				response.sendRedirect("/frontend/usuarios/login.html");
 			};
 		}else if(crear != null){
 			
-			UsuarioDTO dto = new UsuarioDTO();
-			dto.setCedulaUsuario(cedulaDigitada);
-			dto.setEmailUsuario(correoDigitado);
-			dto.setNombreUsuario(nombreDigitado);
-			dto.setPassword(contrasenaDigitada);
-			dto.setUsuario(usuarioDigitado);
+			ClienteDTO dto = new ClienteDTO();
+			dto.setCedulaCliente(cedulaDigitada);
+			dto.setDireccionCliente(direccionDigitada);
+			dto.setEmailCliente(correoDigitado);
+			dto.setNombreCliente(nombreDigitado);
+			dto.setTelefonoCliente(telefonoDigitado);
 			
-			UsuarioLogica logica = new UsuarioLogica();
-			boolean existeUsuario = logica.crear(dto);
-			if(existeUsuario) {
+			ClienteLogica logica = new ClienteLogica();
+			boolean existeCliente = logica.crear(dto);
+			if(existeCliente) {
 				response.sendRedirect("/frontend/menuUsuarios/menuUsuarios.html");
 			}else {
 				response.sendError(0);
 			}
 		}else if(actualizar != null){
 			
-			UsuarioDTO dto = new UsuarioDTO();
-			dto.setCedulaUsuario(cedulaDigitada);
-			dto.setEmailUsuario(correoDigitado);
-			dto.setNombreUsuario(nombreDigitado);
-			dto.setPassword(contrasenaDigitada);
-			dto.setUsuario(usuarioDigitado);
+			ClienteDTO dto = new ClienteDTO();
+			dto.setCedulaCliente(cedulaDigitada);
+			dto.setDireccionCliente(direccionDigitada);
+			dto.setEmailCliente(correoDigitado);
+			dto.setNombreCliente(nombreDigitado);
+			dto.setTelefonoCliente(telefonoDigitado);
 			
-			UsuarioLogica logica = new UsuarioLogica();
-			boolean existeUsuario = logica.actualizar(dto);
-			if(existeUsuario) {
+			ClienteLogica logica = new ClienteLogica();
+			boolean existeCliente = logica.actualizar(dto);
+			if(existeCliente) {
 				response.sendRedirect("/frontend/menuUsuarios/menuUsuarios.html");
 			}else {
 				response.sendError(0);
 			}
 			
 		}	else if (borrar !=null) {
-			UsuarioDTO dto = new UsuarioDTO();
-			dto.setCedulaUsuario(cedulaDigitada);
-			UsuarioLogica logica = new UsuarioLogica();
-			boolean usuarioBorrado = logica.borrar(dto);
-			if(usuarioBorrado !=false) {
+			ClienteDTO dto = new ClienteDTO();
+			dto.setCedulaCliente(cedulaDigitada);
+			ClienteLogica logica = new ClienteLogica();
+			boolean clienteBorrado = logica.borrar(dto);
+			if(clienteBorrado !=false) {
 				response.sendRedirect("/frontend/menu/menuPrincipal.html");
 			}else {
 				response.sendRedirect("/frontend/usuarios/login.html");
 			};
 		}
-		
-		
 	}
-
 
 }

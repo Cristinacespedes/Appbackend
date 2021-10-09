@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,10 +55,10 @@ public class ProveedorControlador {
 		return respuesta;
 	}
 	
-	@GetMapping("/consultar")
-	public @ResponseBody ResponseEntity consultarProveedor(@RequestBody Proveedore proveedorConsultar) {
+	@GetMapping("/consultar/{nit}")
+	public @ResponseBody ResponseEntity consultarProveedor(@PathVariable String nit) {
 		
-		Proveedore proveedorConsultado = servicio.consultarProveedorServicio(proveedorConsultar.getNitproveedor());
+		Proveedore proveedorConsultado = servicio.consultarProveedorServicio(nit);
 		
 		ResponseEntity respuesta = null;
 		if(proveedorConsultado != null) {
@@ -70,10 +71,10 @@ public class ProveedorControlador {
 	}
 
 
-	@DeleteMapping("/borrar")
-	public @ResponseBody ResponseEntity borrarProveedor(@RequestBody Proveedore proveedorNuevo) {
+	@DeleteMapping("/borrar/{nit}")
+	public @ResponseBody ResponseEntity borrarProveedor(@PathVariable String nit) {
 		
-		boolean proveedorBorrar = servicio.borrarProveedorServicio(proveedorNuevo.getNitproveedor());
+		boolean proveedorBorrar = servicio.borrarProveedorServicio(nit);
 		
 		ResponseEntity respuesta = null;
 		if(proveedorBorrar == true) {

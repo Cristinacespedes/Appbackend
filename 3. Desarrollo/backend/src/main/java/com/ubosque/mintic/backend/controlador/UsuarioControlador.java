@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.ubosque.mintic.backend.entidad.Usuario;
 import com.ubosque.mintic.backend.servicio.UsuarioServicio;
@@ -56,10 +58,10 @@ public class UsuarioControlador {
 		return respuesta;
 	}
 	
-	@GetMapping("/consultar")
-	public @ResponseBody ResponseEntity consultarUsuario(@RequestBody Usuario usuarioNuevo) {
+	@GetMapping("/consultar/{cedula}")
+	public @ResponseBody ResponseEntity consultarUsuario(@PathVariable String cedula) {
 		
-		Usuario usuarioConsultado = servicio.consultarUsuarioServicio(usuarioNuevo.getCedulaUsuario());
+		Usuario usuarioConsultado = servicio.consultarUsuarioServicio(cedula);
 		
 		ResponseEntity respuesta = null;
 		if(usuarioConsultado != null) {
@@ -85,10 +87,10 @@ public class UsuarioControlador {
 		return respuesta;
 	}
 
-	@DeleteMapping("/borrar")
-	public @ResponseBody ResponseEntity borrarUsuario(@RequestBody Usuario usuarioNuevo) {
+	@DeleteMapping("/borrar/{cedula}")
+	public @ResponseBody ResponseEntity borrarUsuario(@PathVariable String cedula) {
 		
-		boolean usuarioBorrar = servicio.borrarUsuarioServicio(usuarioNuevo.getCedulaUsuario());
+		boolean usuarioBorrar = servicio.borrarUsuarioServicio(cedula);
 		
 		ResponseEntity respuesta = null;
 		if(usuarioBorrar == true) {

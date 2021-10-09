@@ -53,6 +53,19 @@ public class UsuarioDAO {
 		return respuesta;
 	}
 	
+	public String consultarPorCedula(UsuarioDTO dto) {
+		//Gson gson = new Gson();
+		//String usuarioJSON = gson.toJson(dto);
+		String cedula = dto.getCedulaUsuario();
+		Client cliente = ClientBuilder.newClient();
+		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/consultar/"+cedula);
+		String respuesta = servicioREST.request().get(String.class);
+		//Response consulta = servicioREST.request().post(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));		
+		//String respuesta = consulta.readEntity(String.class);
+		return respuesta;
+				
+	}
+	
 	public boolean consultarPorUsuarioYContrasena(UsuarioDTO dto) {
 		Gson gson = new Gson();
 		String usuarioJSON = gson.toJson(dto);
@@ -60,7 +73,7 @@ public class UsuarioDAO {
 		Client cliente = ClientBuilder.newClient();
 		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/login");
 		Response respuesta = servicioREST.request().post(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));
-		
+
 		if(respuesta.getStatus()==200) {
 			return true;
 		}else if(respuesta.getStatus()==204) {
@@ -69,13 +82,26 @@ public class UsuarioDAO {
 		return false;		
 	}
 	
-	public boolean borrarUsuario(UsuarioDTO usr) {
+	public boolean actualizarUsuario(UsuarioDTO dto) {
 		Gson gson = new Gson();
-		String usuarioJSON = gson.toJson(usr);
+		String usuarioJSON = gson.toJson(dto);
 		
 		Client cliente = ClientBuilder.newClient();
-		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/borrar");
-		Response respuesta = servicioREST.request().post(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));
+		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios");
+		Response respuesta = servicioREST.request().put(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));
+		if(respuesta.getStatus()==201) {
+			return true;
+		}else if(respuesta.getStatus()==404) {
+			return false;
+		}
+		return false;
+	}
+	
+	public boolean borrarUsuario(UsuarioDTO usr) {
+		String cedula = usr.getCedulaUsuario();
+		Client cliente = ClientBuilder.newClient();
+		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/borrar/"+cedula);
+		Response respuesta = servicioREST.request().delete();
 		if(respuesta.getStatus()==200) {
 			return true;
 		}
