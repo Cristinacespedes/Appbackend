@@ -8,7 +8,7 @@
    </head>
 <body>
   <div class="content">
-      <form action="">
+      <form method="post" action="/frontend/MenuProveedoresServlet">
        <div class="containerb">
         <div class="button">
           <button onclick="location.href='/frontend/menuUsuarios/menuUsuarios.html'">Usuarios</button>
@@ -26,31 +26,31 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">NIT</span>
-            <input type="text" placeholder="Digite el NIT" required>
+            <input type="text" name="txtNit" placeholder="Digite el NIT" required>
           </div>
           <div class="input-box">
             <span class="details">Teléfono</span>
-            <input type="text" placeholder="Digite el teléfono" required>
+            <input type="text" name="txtTelefono" placeholder="Digite el teléfono">
           </div>
           <div class="input-box">
             <span class="details">Nombre Proveedor</span>
-            <input type="text" placeholder="Digite el proveedor" required>
+            <input type="text" name="txtNombre" placeholder="Digite el proveedor">
           </div>
           <div class="input-box">
             <span class="details">Ciudad</span>
-            <input type="text" placeholder="Digite la ciudad" required>
+            <input type="text" name="txtCiudad" placeholder="Digite la ciudad">
           </div>
           <div class="input-box">
             <span class="details">Dirección</span>
-            <input type="text" placeholder="Digite la dirección" required>
+            <input type="text" name="txtDireccion" placeholder="Digite la dirección">
           </div>
          </div>
         
           <div class="button">
-          <input type="submit" value="Consultar"> 
-          <input type="submit" value="Crear">
-          <input type="submit" value="Actualizar">
-          <input type="submit" value="Borrar">
+          <input type="submit" value="Consultar" name="Consultar">
+          <input type="submit" value="Crear" name="Crear">
+          <input type="submit" value="Actualizar" name="Actualizar">
+          <input type="submit" value="Borrar" name="Borrar">
 
         </div>
       </form>

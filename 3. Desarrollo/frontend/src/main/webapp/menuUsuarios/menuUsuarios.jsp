@@ -1,16 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-
-  <head>
-    <meta charset="UTF-8">
-    <title> Tienda Gen茅rica | Clientes </title>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+    <title> Tienda Gen閞ica | Usuarios </title>
     <link rel="stylesheet" type="text/css" href="css/style1.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+</head>
 <body>
-     <div class="content">
-      <form method="post" action="/frontend/MenuClienteServlet">
+  <div class="content">
+      <form method="post" action="/frontend/MenuUsuariosServlet">
        <div class="containerb">
-        <div class="button">
+        <div class="button_encabezado">
           <button onclick="location.href='/frontend/menuUsuarios/menuUsuarios.html'">Usuarios</button>
           <button onclick="location.href='/frontend/menuClientes/menuClientes.html'">Clientes</button> 
           <button onclick="location.href='/frontend/menuProveedores/menuProveedores.html'">Proveedores</button>
@@ -19,30 +21,30 @@
 		  <button onclick="location.href='/frontend/menuReportes/menuReportes.html'">Reportes</button>
        </div>
      </div>
-       <div class="content">
-       <form action="">
-         <div class="container">
-         <div class="title">Clientes</div>
-          <div class="user-details">
-           <div class="input-box">
-            <span class="details">C茅dula</span>
-            <input type="text" name="txtCedula" placeholder="Digite la c茅dula" required>
+   <div class="container">
+    <div class="title">Usuarios</div>
+    <div class="content">
+
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">C閐ula</span>
+            <input type="text" required="required" name="txtCedula" maxlength="20" placeholder="Digite su c閐ula">
           </div>
           <div class="input-box">
-            <span class="details">Tel茅fono</span>
-            <input type="text" name="txtTelefono" placeholder="Digite el tel茅fono">
+            <span class="details">Usuario</span>
+            <input type="text" name="txtUsuario" maxlength="255" placeholder="Digite su usuario">
           </div>
           <div class="input-box">
             <span class="details">Nombre Completo</span>
-            <input type="text" name="txtNombre" placeholder="Digite el nombre">
+            <input type="text" name="txtNombre" maxlength="255" placeholder="Digite su nombre">
           </div>
           <div class="input-box">
-            <span class="details">Correo Electr贸nico</span>
-            <input type="text" name="emCorreo"placeholder="Digite el correo electr贸nico">
+            <span class="details">Contrase馻</span>
+            <input type="password" name="pwdContrasena" maxlength="255" placeholder="Digite su contrase馻">
           </div>
           <div class="input-box">
-            <span class="details">Direcci贸n</span>
-            <input type="text" name="txtDireccion" placeholder="Digite la direcci贸n">
+            <span class="details">Correo Electr髇ico</span>
+            <input type="email" name="emCorreo" maxlength="255" placeholder="Digite su correo electr髇ico">
           </div>
          </div>
         

@@ -1,8 +1,6 @@
 package com.ubosque.mintic.frontend.dao;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Client;
@@ -13,8 +11,6 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.ubosque.mintic.frontend.dto.ClienteDTO;
-import com.ubosque.mintic.frontend.dto.UsuarioDTO;
-
 
 
 public class ClienteDAO {
@@ -24,11 +20,11 @@ public class ClienteDAO {
 		String clienteJSON = gson.toJson(dto);
 		
 		Client cliente = ClientBuilder.newClient();
-		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/crear");
+		WebTarget servicioREST = cliente.target("http://localhost:5000/clientes");
 		Response respuesta = servicioREST.request().post(Entity.entity(clienteJSON, MediaType.APPLICATION_JSON_TYPE));
 		if(respuesta.getStatus()==201) {
 			return true;
-		}else if(respuesta.getStatus()==404) {
+		}else if(respuesta.getStatus()==406) {
 			return false;
 		}
 		return false;
@@ -44,7 +40,7 @@ public class ClienteDAO {
 	public String consultarPorCedula(ClienteDTO dto) {
 		String cedula = dto.getCedulaCliente();
 		Client cliente = ClientBuilder.newClient();
-		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/consultar/"+cedula);
+		WebTarget servicioREST = cliente.target("http://localhost:5000/clientes/consultar/"+cedula);
 		String respuesta = servicioREST.request().get(String.class);
 		return respuesta;
 				
@@ -59,7 +55,7 @@ public class ClienteDAO {
 		Response respuesta = servicioREST.request().put(Entity.entity(clienteJSON, MediaType.APPLICATION_JSON_TYPE));
 		if(respuesta.getStatus()==201) {
 			return true;
-		}else if(respuesta.getStatus()==404) {
+		}else if(respuesta.getStatus()==406) {
 			return false;
 		}
 		return false;
@@ -68,7 +64,7 @@ public class ClienteDAO {
 	public boolean borrarCliente(ClienteDTO clienteBorrar) {
 		String cedula = clienteBorrar.getCedulaCliente();
 		Client cliente = ClientBuilder.newClient();
-		WebTarget servicioREST = cliente.target("http://localhost:5000/usuarios/borrar/"+cedula);
+		WebTarget servicioREST = cliente.target("http://localhost:5000/clientes/borrar/"+cedula);
 		Response respuesta = servicioREST.request().delete();
 		if(respuesta.getStatus()==200) {
 			return true;

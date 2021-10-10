@@ -16,7 +16,8 @@ public class Proveedore implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String nitproveedor;
+	@Column(name="nitproveedor")
+	private String nitProveedor;
 
 	@Column(name="ciudad_proveedor")
 	private String ciudadProveedor;
@@ -37,12 +38,12 @@ public class Proveedore implements Serializable {
 	public Proveedore() {
 	}
 
-	public String getNitproveedor() {
-		return this.nitproveedor;
+	public String getNitProveedor() {
+		return this.nitProveedor;
 	}
 
-	public void setNitproveedor(String nitproveedor) {
-		this.nitproveedor = nitproveedor;
+	public void setNitProveedor(String nitproveedor) {
+		this.nitProveedor = nitproveedor;
 	}
 
 	public String getCiudadProveedor() {

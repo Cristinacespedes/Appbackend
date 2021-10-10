@@ -55,7 +55,7 @@ public class MenuClienteServlet extends HttpServlet {
 			ClienteLogica logica = new ClienteLogica();
 			ClienteDTO clienteConsultado = logica.consultarPorCedula(dto);
 			if(clienteConsultado !=null) {
-				response.sendRedirect("/frontend/menu/menuPrincipal.html");
+				response.sendRedirect("/frontend/menuClientes/menuClientes.html");
 			}else {
 				response.sendRedirect("/frontend/usuarios/login.html");
 			};
@@ -71,7 +71,7 @@ public class MenuClienteServlet extends HttpServlet {
 			ClienteLogica logica = new ClienteLogica();
 			boolean existeCliente = logica.crear(dto);
 			if(existeCliente) {
-				response.sendRedirect("/frontend/menuUsuarios/menuUsuarios.html");
+				response.sendRedirect("/frontend/menuClientes/menuClientes.html");
 			}else {
 				response.sendError(0);
 			}
@@ -87,7 +87,7 @@ public class MenuClienteServlet extends HttpServlet {
 			ClienteLogica logica = new ClienteLogica();
 			boolean existeCliente = logica.actualizar(dto);
 			if(existeCliente) {
-				response.sendRedirect("/frontend/menuUsuarios/menuUsuarios.html");
+				response.sendRedirect("/frontend/menuClientes/menuClientes.html");
 			}else {
 				response.sendError(0);
 			}
@@ -98,7 +98,7 @@ public class MenuClienteServlet extends HttpServlet {
 			ClienteLogica logica = new ClienteLogica();
 			boolean clienteBorrado = logica.borrar(dto);
 			if(clienteBorrado !=false) {
-				response.sendRedirect("/frontend/menu/menuPrincipal.html");
+				response.sendRedirect("/frontend/menuClientes/menuClientes.html");
 			}else {
 				response.sendRedirect("/frontend/usuarios/login.html");
 			};

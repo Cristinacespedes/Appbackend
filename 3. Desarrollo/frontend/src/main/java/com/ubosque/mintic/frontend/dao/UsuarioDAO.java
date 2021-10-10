@@ -18,19 +18,6 @@ import com.ubosque.mintic.frontend.dto.UsuarioDTO;
 
 public class UsuarioDAO {
 	
-	public static void main(String[] args) {
-		UsuarioDTO dto = new UsuarioDTO();
-		dto.setCedulaUsuario("999");
-		dto.setEmailUsuario("correo@mail.com");
-		dto.setNombreUsuario("Nombre Correo");
-		dto.setUsuario("correo");
-		dto.setPassword("999");
-		UsuarioDAO dao = new UsuarioDAO();
-		//dao.crearUsuario(dto);
-		//dao.listarUsuarios();
-		dao.consultarPorUsuarioYContrasena(dto);
-	}
-	
 	public boolean crearUsuario(UsuarioDTO dto) {
 		Gson gson = new Gson();
 		String usuarioJSON = gson.toJson(dto);
@@ -40,7 +27,7 @@ public class UsuarioDAO {
 		Response respuesta = servicioREST.request().post(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));
 		if(respuesta.getStatus()==201) {
 			return true;
-		}else if(respuesta.getStatus()==404) {
+		}else if(respuesta.getStatus()==406) {
 			return false;
 		}
 		return false;
@@ -91,7 +78,7 @@ public class UsuarioDAO {
 		Response respuesta = servicioREST.request().put(Entity.entity(usuarioJSON, MediaType.APPLICATION_JSON_TYPE));
 		if(respuesta.getStatus()==201) {
 			return true;
-		}else if(respuesta.getStatus()==404) {
+		}else if(respuesta.getStatus()==406) {
 			return false;
 		}
 		return false;
