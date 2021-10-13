@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title> Tienda Genérica | Proveedores </title>
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="content">
+      <form method="post" action="/frontend/MenuProveedoresServlet">
+       <div class="containerb">
+        <div class="button">
+          <button onclick="location.href='/frontend/menuUsuarios/menuUsuarios.jsp'">Usuarios</button>
+          <button onclick="location.href='/frontend/menuClientes/menuClientes.html'">Clientes</button> 
+          <button onclick="location.href='/frontend/menuProveedores/menuProveedores.html'">Proveedores</button>
+		  <button onclick="location.href='/frontend/menuProductos/menuProductos.html'">Productos</button> 
+		  <button onclick="location.href='/frontend/menuVentas/menuVentas.html'">Ventas</button>
+		  <button onclick="location.href='/frontend/menuReportes/menuReportes.html'">Reportes</button>
+       </div>
+     </div>
+   <div class="container">
+    <div class="title">Proveedores</div>
+    <div class="content">
+      <form action="">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">NIT</span>
+            <input type="text" name="txtNit" placeholder="Digite el NIT" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Teléfono</span>
+            <input type="text" name="txtTelefono" placeholder="Digite el teléfono">
+          </div>
+          <div class="input-box">
+            <span class="details">Nombre Proveedor</span>
+            <input type="text" name="txtNombre" placeholder="Digite el proveedor">
+          </div>
+          <div class="input-box">
+            <span class="details">Ciudad</span>
+            <input type="text" name="txtCiudad" placeholder="Digite la ciudad">
+          </div>
+          <div class="input-box">
+            <span class="details">Dirección</span>
+            <input type="text" name="txtDireccion" placeholder="Digite la dirección">
+          </div>
+         </div>
+        
+          <div class="button">
+          <input type="submit" value="Consultar" name="Consultar">
+          <input type="submit" value="Crear" name="Crear">
+          <input type="submit" value="Actualizar" name="Actualizar">
+          <input type="submit" value="Borrar" name="Borrar">
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
