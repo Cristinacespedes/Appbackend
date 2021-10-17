@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bienvenido | Login</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="">
+	<div class="contenido">
+		<div class="img">
+		   <img src="img/1-1.png">
+		</div>
+		<div class="contenido-login">
+			<form method="post" action="/frontend/ServletLogin">
+			<h2 class="title">Bienvenidos a la Tienda Genérica</h2>
+           		 <div class="input-div one">
+           		   <div class="i">
+           		   	<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   	
+           		   	<input type="text" required="required" name="txtUsuario" maxlength="255" placeholder="Digite su usuario"></input>
+           		   </div>
+           		 </div>
+
+           		 <div class="input-div pass">
+           		   <div class="i">
+           		 <i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	
+           		    	<input type="password" id="contra"required="required" name="pwdContrasena" maxlength="255" placeholder="Digite su contrasena"></input>
+            	           </div>  
+            	</div>
+            	 <div class="checkbox">
+    <input type="checkbox" onclick="myfuction()">Ver contraseña<br>
+    </div>
+                <br>
+                <br>
+                <br>
+            	<input type="submit" class="btn" value="Aceptar">
+		<input type="reset" class="btn" value="Cancelar">
+            </form>
+        </div>
+            </div>
+            <script type ="text/javascript">
+            	function myfuction(){
+            		var x = document.getElementById("contra");
+            		if (x.type=="password") {
+						x.type="text";
+					} else {
+						x.type="password";
+					}
+            	}
+            </script>
+    
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
